@@ -1,0 +1,34 @@
+openapi: 3.0.3
+servers:
+  - url: http://localhost:8888
+info:
+  version: 999-SNAPSHOT
+  title: Users API
+paths:
+  "/users/{id}":
+    get:
+      parameters:
+        - name: id
+          in: path
+          examples:
+            alice:
+              value: 1
+      responses:
+        200:
+          content:
+            "application/json":
+              examples:
+                alice:
+                  $ref: "#/components/schemas/User"
+          description: Ok
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "Alice"
+        age:
+          type: number
+          example: 80
